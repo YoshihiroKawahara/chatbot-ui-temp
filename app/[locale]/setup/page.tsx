@@ -99,121 +99,61 @@ export default function SetupPage() {
     })()
   }, [])
 
-  // const handleShouldProceed = (proceed: boolean) => {
-  //   if (proceed) {
-  //     if (currentStep === SETUP_STEP_COUNT) {
-  //       handleSaveSetupSetting()
-  //     } else {
-  //       setCurrentStep(currentStep + 1)
-  //     }
-  //   } else {
-  //     setCurrentStep(currentStep - 1)
-  //   }
-  // }
-
-  // const handleSaveSetupSetting = async () => {
-  //   const session = (await supabase.auth.getSession()).data.session
-  //   if (!session) {
-  //     return router.push("/login")
-  //   }
-
-  //   const user = session.user
-  //   const profile = await getProfileByUserId(user.id)
-
-  //   const updateProfilePayload: TablesUpdate<"profiles"> = {
-  //     ...profile,
-  //     has_onboarded: true,
-  //     display_name: displayName,
-  //     username,
-  //     openai_api_key: openaiAPIKey,
-  //     openai_organization_id: openaiOrgID,
-  //     anthropic_api_key: anthropicAPIKey,
-  //     google_gemini_api_key: googleGeminiAPIKey,
-  //     mistral_api_key: mistralAPIKey,
-  //     groq_api_key: groqAPIKey,
-  //     perplexity_api_key: perplexityAPIKey,
-  //     openrouter_api_key: openrouterAPIKey,
-  //     use_azure_openai: useAzureOpenai,
-  //     azure_openai_api_key: azureOpenaiAPIKey,
-  //     azure_openai_endpoint: azureOpenaiEndpoint,
-  //     azure_openai_35_turbo_id: azureOpenai35TurboID,
-  //     azure_openai_45_turbo_id: azureOpenai45TurboID,
-  //     azure_openai_45_vision_id: azureOpenai45VisionID,
-  //     azure_openai_embeddings_id: azureOpenaiEmbeddingsID
-  //   }
-
-  //   const updatedProfile = await updateProfile(profile.id, updateProfilePayload)
-  //   setProfile(updatedProfile)
-
-  //   const workspaces = await getWorkspacesByUserId(profile.user_id)
-  //   const homeWorkspace = workspaces.find(w => w.is_home)
-
-  //   // There will always be a home workspace
-  //   setSelectedWorkspace(homeWorkspace!)
-  //   setWorkspaces(workspaces)
-
-  //   return router.push(`/${homeWorkspace?.id}/chat`)
-  // }
-const handleShouldProceed = (proceed: boolean) => {
-  console.log("handleShouldProceed called with proceed:", proceed);
-  if (proceed) {
-    if (currentStep === SETUP_STEP_COUNT) {
-      console.log("Calling handleSaveSetupSetting");
-      handleSaveSetupSetting();
+  const handleShouldProceed = (proceed: boolean) => {
+    if (proceed) {
+      if (currentStep === SETUP_STEP_COUNT) {
+        handleSaveSetupSetting()
+      } else {
+        setCurrentStep(currentStep + 1)
+      }
     } else {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1)
     }
-  } else {
-    setCurrentStep(currentStep - 1);
-  }
-}
-
-const handleSaveSetupSetting = async () => {
-  console.log("handleSaveSetupSetting called");
-  const session = (await supabase.auth.getSession()).data.session;
-  if (!session) {
-    console.log("No session found, redirecting to login");
-    return router.push("/login");
   }
 
-  const user = session.user;
-  const profile = await getProfileByUserId(user.id);
+  const handleSaveSetupSetting = async () => {
+    const session = (await supabase.auth.getSession()).data.session
+    if (!session) {
+      return router.push("/login")
+    }
 
-  const updateProfilePayload: TablesUpdate<"profiles"> = {
-    ...profile,
-    has_onboarded: true,
-    display_name: displayName,
-    username,
-    openai_api_key: openaiAPIKey,
-    openai_organization_id: openaiOrgID,
-    anthropic_api_key: anthropicAPIKey,
-    google_gemini_api_key: googleGeminiAPIKey,
-    mistral_api_key: mistralAPIKey,
-    groq_api_key: groqAPIKey,
-    perplexity_api_key: perplexityAPIKey,
-    openrouter_api_key: openrouterAPIKey,
-    use_azure_openai: useAzureOpenai,
-    azure_openai_api_key: azureOpenaiAPIKey,
-    azure_openai_endpoint: azureOpenaiEndpoint,
-    azure_openai_35_turbo_id: azureOpenai35TurboID,
-    azure_openai_45_turbo_id: azureOpenai45TurboID,
-    azure_openai_45_vision_id: azureOpenai45VisionID,
-    azure_openai_embeddings_id: azureOpenaiEmbeddingsID
-  };
+    const user = session.user
+    const profile = await getProfileByUserId(user.id)
 
-  console.log("Updating profile with payload:", updateProfilePayload);
-  const updatedProfile = await updateProfile(profile.id, updateProfilePayload);
-  setProfile(updatedProfile);
+    const updateProfilePayload: TablesUpdate<"profiles"> = {
+      ...profile,
+      has_onboarded: true,
+      display_name: displayName,
+      username,
+      openai_api_key: openaiAPIKey,
+      openai_organization_id: openaiOrgID,
+      anthropic_api_key: anthropicAPIKey,
+      google_gemini_api_key: googleGeminiAPIKey,
+      mistral_api_key: mistralAPIKey,
+      groq_api_key: groqAPIKey,
+      perplexity_api_key: perplexityAPIKey,
+      openrouter_api_key: openrouterAPIKey,
+      use_azure_openai: useAzureOpenai,
+      azure_openai_api_key: azureOpenaiAPIKey,
+      azure_openai_endpoint: azureOpenaiEndpoint,
+      azure_openai_35_turbo_id: azureOpenai35TurboID,
+      azure_openai_45_turbo_id: azureOpenai45TurboID,
+      azure_openai_45_vision_id: azureOpenai45VisionID,
+      azure_openai_embeddings_id: azureOpenaiEmbeddingsID
+    }
 
-  const workspaces = await getWorkspacesByUserId(profile.user_id);
-  const homeWorkspace = workspaces.find(w => w.is_home);
+    const updatedProfile = await updateProfile(profile.id, updateProfilePayload)
+    setProfile(updatedProfile)
 
-  console.log("Setting selected workspace:", homeWorkspace);
-  setSelectedWorkspace(homeWorkspace!);
-  setWorkspaces(workspaces);
+    const workspaces = await getWorkspacesByUserId(profile.user_id)
+    const homeWorkspace = workspaces.find(w => w.is_home)
 
-  return router.push(`/${homeWorkspace?.id}/chat`);
-}
+    // There will always be a home workspace
+    setSelectedWorkspace(homeWorkspace!)
+    setWorkspaces(workspaces)
+
+    return router.push(`/${homeWorkspace?.id}/chat`)
+  }
 
   const renderStep = (stepNum: number) => {
     switch (stepNum) {
