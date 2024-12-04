@@ -18,7 +18,7 @@ const GPT4o: LLM = {
   }
 }
 
-const GPT4omini: LLM = {
+const GPT4oMini: LLM = {
   modelId: "gpt-4o-mini",
   modelName: "GPT-4o-mini",
   provider: "openai",
@@ -98,7 +98,7 @@ const GPT4omini: LLM = {
 
 export const OPENAI_LLM_LIST: LLM[] = [
   GPT4o,
-  GPT4omini
+  GPT4oMini
   // GPT4Turbo,
   // GPT4Vision,
   // GPT4,
