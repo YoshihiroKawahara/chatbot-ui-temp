@@ -33,7 +33,7 @@ const GPT4oMini: LLM = {
   }
 }
 
-const o3mini: LLM = {
+const o3Mini: LLM = {
   modelId: "o3-mini",
   modelName: "o3-mini",
   provider: "openai",
