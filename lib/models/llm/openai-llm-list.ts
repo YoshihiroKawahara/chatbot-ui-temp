@@ -130,7 +130,7 @@ export const OPENAI_LLM_LIST: LLM[] = [
   GPT4o,
   GPT4oMini,
   o3mini,
-  o1
+  o1,
   GPT4Turbo,
   GPT4Vision,
   GPT4,
