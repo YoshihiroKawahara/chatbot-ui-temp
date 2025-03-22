@@ -33,7 +33,7 @@ const GPT4oMini: LLM = {
   }
 }
 
-const o3-mini: LLM = {
+const o3mini: LLM = {
   modelId: "o3-mini",
   modelName: "o3-mini",
   provider: "openai",
@@ -62,6 +62,7 @@ const o1: LLM = {
     outputCost: 7.5
   }
 }
+
 // GPT-4 Turbo (UPDATED 1/25/24)
 // const GPT4Turbo: LLM = {
 //   modelId: "gpt-4-turbo-preview",
