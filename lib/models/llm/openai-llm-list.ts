@@ -33,6 +33,35 @@ const GPT4oMini: LLM = {
   }
 }
 
+const o3-mini: LLM = {
+  modelId: "o3-mini",
+  modelName: "o3-mini",
+  provider: "openai",
+  hostedId: "o3-mini",
+  platformLink: OPENAI_PLATORM_LINK,
+  imageInput: true,
+  pricing: {
+    currency: "USD",
+    unit: "1M tokens",
+    inputCost: 1.1,
+    outputCost: 4.4
+  }
+}
+
+const o1: LLM = {
+  modelId: "o1",
+  modelName: "o1",
+  provider: "openai",
+  hostedId: "o1",
+  platformLink: OPENAI_PLATORM_LINK,
+  imageInput: true,
+  pricing: {
+    currency: "USD",
+    unit: "1M tokens",
+    inputCost: 15,
+    outputCost: 7.5
+  }
+}
 // GPT-4 Turbo (UPDATED 1/25/24)
 // const GPT4Turbo: LLM = {
 //   modelId: "gpt-4-turbo-preview",
