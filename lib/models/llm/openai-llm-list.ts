@@ -63,7 +63,7 @@ const o1: LLM = {
   }
 }
 
-GPT-4 Turbo (UPDATED 1/25/24)
+//GPT-4 Turbo (UPDATED 1/25/24)
 const GPT4Turbo: LLM = {
   modelId: "gpt-4-turbo-preview",
   modelName: "GPT-4 Turbo",
